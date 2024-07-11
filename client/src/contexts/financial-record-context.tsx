@@ -49,7 +49,7 @@ export const FinancialRecordsProvider = ({
   }, [user]);
 
   const addRecord = async (record: FinancialRecord) => {
-    const response = await fetch(`http://${baseURL}/financial-records`, {
+    const response = await fetch(`${baseURL}/financial-records`, {
       method: "POST",
       body: JSON.stringify(record),
       headers: {
@@ -69,7 +69,7 @@ export const FinancialRecordsProvider = ({
 
   const updateRecord = async (id: string, newRecord: FinancialRecord) => {
     const response = await fetch(
-      `http://${baseURL}/financial-records/${id}`,
+      `${baseURL}/financial-records/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(newRecord),
@@ -99,7 +99,7 @@ export const FinancialRecordsProvider = ({
 
   const deleteRecord = async (id: string) => {
     const response = await fetch(
-      `http://${baseURL}/financial-records/${id}`,
+      `${baseURL}/financial-records/${id}`,
       {
         method: "DELETE",
       }
