@@ -1,5 +1,6 @@
 import { useUser } from "@clerk/clerk-react";
 import { createContext, useContext, useEffect, useState } from "react";
+import { baseURL } from "../utils";
 
 export interface FinancialRecord {
   _id?: string;
@@ -33,7 +34,7 @@ export const FinancialRecordsProvider = ({
   const fetchRecords = async () => {
     if (!user) return;
     const response = await fetch(
-      `http://localhost:3001/financial-records/getAllByUserID/${user.id}`
+      `${baseURL}/financial-records/getAllByUserID/${user.id}`
     );
 
     if (response.ok) {
@@ -48,7 +49,7 @@ export const FinancialRecordsProvider = ({
   }, [user]);
 
   const addRecord = async (record: FinancialRecord) => {
-    const response = await fetch("http://localhost:3001/financial-records", {
+    const response = await fetch(`http://${baseURL}/financial-records`, {
       method: "POST",
       body: JSON.stringify(record),
       headers: {
@@ -61,12 +62,14 @@ export const FinancialRecordsProvider = ({
         const newRecord = await response.json();
         setRecords((prev) => [...prev, newRecord]);
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const updateRecord = async (id: string, newRecord: FinancialRecord) => {
     const response = await fetch(
-      `http://localhost:3001/financial-records/${id}`,
+      `http://${baseURL}/financial-records/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(newRecord),
@@ -89,12 +92,14 @@ export const FinancialRecordsProvider = ({
           })
         );
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const deleteRecord = async (id: string) => {
     const response = await fetch(
-      `http://localhost:3001/financial-records/${id}`,
+      `http://${baseURL}/financial-records/${id}`,
       {
         method: "DELETE",
       }
@@ -107,7 +112,9 @@ export const FinancialRecordsProvider = ({
           prev.filter((record) => record._id !== deletedRecord._id)
         );
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
