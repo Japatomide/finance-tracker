@@ -35,14 +35,18 @@ function App() {
             <h1 style={{ fontSize: "22px" }}>TrackMyFunds</h1>
           </div>
           {isSignedIn === false ? (
-            <div style={{ display: "flex", gap: "1rem", marginRight: "0.5rem" }}>
+            <div
+              style={{ display: "flex", gap: "1rem", marginRight: "0.5rem" }}
+            >
               <SignUpButton mode="modal" />
               <SignInButton mode="modal" />
             </div>
           ) : (
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
+            <div style={{ marginRight: "40px" }}>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </div>
           )}
         </div>
         <Routes>
