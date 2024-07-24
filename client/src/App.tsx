@@ -17,29 +17,34 @@ function App() {
 
   return (
     <Router>
-      <div className="app-container">
-        <div
-          className="navbar"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginLeft: "2.5rem",
-          }}
-        >
+      <nav>
+        <div className="navbar">
           <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
             <img
               style={{ width: "30px", height: "30px" }}
               src="/business-and-finance.png"
               alt=""
             />
-            <h1 style={{ fontSize: "22px" }}>TrackMyFunds</h1>
+            <h1 className="logo-text">TrackMyFunds</h1>
           </div>
           {isSignedIn === false ? (
             <div
               style={{ display: "flex", gap: "1rem", marginRight: "0.5rem" }}
             >
-              <SignUpButton mode="modal" />
-              <SignInButton mode="modal" />
+              <SignUpButton mode="modal">
+                <button style={{ backgroundColor: "#3498db" }}>Sign Up</button>
+              </SignUpButton>
+              <SignInButton mode="modal">
+                <button
+                  style={{
+                    backgroundColor: "white",
+                    color: "#3498db",
+                    border: "1px solid #3498db",
+                  }}
+                >
+                  Sign In
+                </button>
+              </SignInButton>
             </div>
           ) : (
             <div style={{ marginRight: "40px" }}>
@@ -49,6 +54,8 @@ function App() {
             </div>
           )}
         </div>
+      </nav>
+      <div className="app-container">
         <Routes>
           <Route
             path="/dashboard"
