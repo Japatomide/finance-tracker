@@ -1,9 +1,12 @@
 /* General page styles */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
 body,
 html {
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: #f4f7fa;
   color: #333;
 }
@@ -29,9 +32,7 @@ html {
   width: 100%;
   height: 60px;
 }
-.sign-in-container {
-  margin-top: 300px;
-}
+
 
 .sign-in-container button {
   margin: 10px;
@@ -63,4 +64,53 @@ html {
 
 /* Additional styles to ensure text and elements are vertically aligned properly */
 .navbar * {
+}
+
+body {
+  background-image: url("/client/public/bg.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  border: 3px solid #3498db;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  background-color: #3498db;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
+  font-family: inherit;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.btn:hover {
+  color: #3498db;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  transform: translateX(-100%);
+  transition: all 0.3s;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  transform: translateX(0);
 }
