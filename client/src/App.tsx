@@ -13,8 +13,8 @@ import {
 import { useUser } from "@clerk/clerk-react";
 
 function App() {
-  const { isSignedIn, user, isLoaded } = useUser();
-  console.log(isSignedIn, user, isLoaded);
+  const { isSignedIn } = useUser();
+
   return (
     <Router>
       <div className="app-container">
